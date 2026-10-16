@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8" ?><ContentPage
+xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+x:Class="Tasklet.TaskEditorPage"
+BackgroundColor="#090B0A"
+Shell.NavBarIsVisible="False">
+
+<Grid RowDefinitions="*,Auto">
+
+    <ScrollView Grid.Row="0">
+        <VerticalStackLayout Padding="22,28,22,24" Spacing="22">
+
+           
+            <Grid ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Spacing="5">
+                    <Label
+                        Text="TASKLET / WORKSPACE"
+                        FontSize="10"
+                        CharacterSpacing="2"
+                        FontAttributes="Bold"
+                        TextColor="#5EEAD4" />
+
+                    <Label
+                        x:Name="HeadingLabel"
+                        Text="Create a task"
+                        FontSize="29"
+                        FontAttributes="Bold"
+                        TextColor="#F4F4F5" />
+
+                    <Label
+                        Text="Give your next step some structure."
+                        FontSize="13"
+                        TextColor="#A1A1AA" />
+                </VerticalStackLayout>
+
+                <Button
+                    Grid.Column="1"
+                    Text="✕"
+                    WidthRequest="42"
+                    HeightRequest="42"
+                    CornerRadius="14"
+                    BackgroundColor="#1C211F"
+                    TextColor="#D4D4D8"
+                    VerticalOptions="Start"
+                    Clicked="OnCancelClicked" />
+            </Grid>
+
+            
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Text="TASK TITLE"
+                    FontSize="11"
+                    CharacterSpacing="1"
+                    FontAttributes="Bold"
+                    TextColor="#A1A1AA" />
+
+                <Border
+                    BackgroundColor="#141816"
+                    Stroke="#303833"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="13,0">
+
+                    <Entry
+                        x:Name="TitleEntry"
+                        Placeholder="What needs to get done?"
+                        PlaceholderColor="#71717A"
+                        TextColor="#F4F4F5"
+                        BackgroundColor="Transparent"
+                        MaxLength="100"
+                        ReturnType="Next" />
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Description -->
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Text="DESCRIPTION"
+                    FontSize="11"
+                    CharacterSpacing="1"
+                    FontAttributes="Bold"
+                    TextColor="#A1A1AA" />
+
+                <Border
+                    BackgroundColor="#141816"
+                    Stroke="#303833"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="13">
+
+                    <Editor
+                        x:Name="DescriptionEditor"
+                        Placeholder="Add extra details (optional)"
+                        PlaceholderColor="#71717A"
+                        TextColor="#F4F4F5"
+                        BackgroundColor="Transparent"
+                        AutoSize="TextChanges"
+                        HeightRequest="90"
+                        MaxLength="500" />
+                </Border>
+            </VerticalStackLayout>
+
+          
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Text="DUE DATE"
+                    FontSize="11"
+                    CharacterSpacing="1"
+                    FontAttributes="Bold"
+                    TextColor="#A1A1AA" />
+
+                <Border
+                    BackgroundColor="#141816"
+                    Stroke="#303833"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="12">
+
+                    <DatePicker
+                        x:Name="DueDatePicker"
+                        Format="ddd, dd MMM yyyy"
+                        TextColor="#5EEAD4"
+                        BackgroundColor="Transparent"
+                        MinimumDate="2000-01-01"
+                        HorizontalOptions="Fill" />
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Due time -->
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Text="DUE TIME"
+                    FontSize="11"
+                    CharacterSpacing="1"
+                    FontAttributes="Bold"
+                    TextColor="#A1A1AA" />
+
+                <Border
+                    BackgroundColor="#141816"
+                    Stroke="#303833"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="12">
+
+                    <TimePicker
+                        x:Name="DueTimePicker"
+                        Format="h:mm tt"
+                        Time="17:00:00"
+                        TextColor="#5EEAD4"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Fill" />
+                </Border>
+
+                <Label
+                    Text="When should this task be finished?"
+                    FontSize="11"
+                    TextColor="#71717A" />
+            </VerticalStackLayout>
+
+            
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Text="CATEGORY"
+                    FontSize="11"
+                    CharacterSpacing="1"
+                    FontAttributes="Bold"
+                    TextColor="#A1A1AA" />
+
+                <Border
+                    BackgroundColor="#141816"
+                    Stroke="#303833"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="12,4">
+
+                    <Picker
+                        x:Name="CategoryPicker"
+                        Title="Choose a category"
+                        TextColor="#F4F4F5"
+                        TitleColor="#71717A"
+                        BackgroundColor="Transparent">
+
+                        <Picker.Items>
+                            <x:String>Personal</x:String>
+                            <x:String>Work</x:String>
+                            <x:String>Study</x:String>
+                            <x:String>Health</x:String>
+                            <x:String>Shopping</x:String>
+                            <x:String>Other</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Priority -->
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Text="PRIORITY"
+                    FontSize="11"
+                    CharacterSpacing="1"
+                    FontAttributes="Bold"
+                    TextColor="#A1A1AA" />
+
+                <Border
+                    BackgroundColor="#141816"
+                    Stroke="#303833"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="12,4">
+
+                    <Picker
+                        x:Name="PriorityPicker"
+                        Title="Choose priority"
+                        TextColor="#F4F4F5"
+                        TitleColor="#71717A"
+                        BackgroundColor="Transparent">
+
+                        <Picker.Items>
+                            <x:String>Low</x:String>
+                            <x:String>Medium</x:String>
+                            <x:String>High</x:String>
+                            <x:String>Urgent</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Recurrence -->
+            <VerticalStackLayout Spacing="8">
+                <Label
+                    Text="REPEAT"
+                    FontSize="11"
+                    CharacterSpacing="1"
+                    FontAttributes="Bold"
+                    TextColor="#A1A1AA" />
+
+                <Border
+                    BackgroundColor="#141816"
+                    Stroke="#303833"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="12,4">
+
+                    <Picker
+                        x:Name="RecurrencePicker"
+                        Title="Does this task repeat?"
+                        TextColor="#F4F4F5"
+                        TitleColor="#71717A"
+                        BackgroundColor="Transparent">
+
+                        <Picker.Items>
+                            <x:String>None</x:String>
+                            <x:String>Daily</x:String>
+                            <x:String>Weekly</x:String>
+                            <x:String>Monthly</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Reminder -->
+            <Border
+                Padding="16"
+                BackgroundColor="#141816"
+                Stroke="#303833"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 18">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <VerticalStackLayout Spacing="4">
+                            <Label
+                                Text="Task reminder"
+                                FontSize="15"
+                                FontAttributes="Bold"
+                                TextColor="#F4F4F5" />
+
+                            <Label
+                                Text="Get a notification at your chosen time."
+                                FontSize="12"
+                                TextColor="#A1A1AA" />
+                        </VerticalStackLayout>
+
+                        <Switch
+                            x:Name="ReminderSwitch"
+                            Grid.Column="1"
+                            IsToggled="False"
+                            OnColor="#5EEAD4"
+                            ThumbColor="#F4F4F5"
+                            Toggled="OnReminderToggled"
+                            VerticalOptions="Center" />
+                    </Grid>
+
+                    <VerticalStackLayout
+                        x:Name="ReminderOptions"
+                        IsVisible="False"
+                        Spacing="8">
+
+                        <Label
+                            Text="REMINDER TIME"
+                            FontSize="11"
+                            CharacterSpacing="1"
+                            FontAttributes="Bold"
+                            TextColor="#A1A1AA" />
+
+                        <Border
+                            BackgroundColor="#0C100E"
+                            Stroke="#303833"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 13"
+                            Padding="10">
+
+                            <TimePicker
+                                x:Name="ReminderTimePicker"
+                                Format="h:mm tt"
+                                Time="09:00:00"
+                                TextColor="#5EEAD4"
+                                BackgroundColor="Transparent" />
+                        </Border>
+
+                        <Label
+                            Text="The reminder uses the task's due date."
+                            FontSize="11"
+                            TextColor="#71717A" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Validation -->
+            <Label
+                x:Name="ValidationLabel"
+                IsVisible="False"
+                TextColor="#FB7185"
+                FontSize="12" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+    <!-- Fixed actions -->
+    <Border
+        Grid.Row="1"
+        Padding="20,14,20,22"
+        BackgroundColor="#111512"
+        Stroke="#303833"
+        StrokeThickness="1">
+
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+
+            <Button
+                Text="Cancel"
+                Clicked="OnCancelClicked"
+                BackgroundColor="#202521"
+                TextColor="#D4D4D8"
+                CornerRadius="14"
+                HeightRequest="50" />
+
+            <Button
+                Grid.Column="1"
+                x:Name="SaveButton"
+                Text="Save task"
+                Clicked="OnSaveClicked"
+                BackgroundColor="#5EEAD4"
+                TextColor="#09201C"
+                FontAttributes="Bold"
+                CornerRadius="14"
+                HeightRequest="50" />
+
+        </Grid>
+    </Border>
+
+</Grid>
+
+</ContentPage>

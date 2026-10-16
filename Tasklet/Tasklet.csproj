@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net10.0-android</TargetFramework>
+    <AssemblyName>Tasklet</AssemblyName>
+    <RootNamespace>Tasklet</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseMaui>true</UseMaui>
+    <MauiXamlInflator>SourceGen</MauiXamlInflator>
+    <ApplicationId>com.companyname.tasklet</ApplicationId>
+    <ApplicationTitle>Tasklet</ApplicationTitle>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <RuntimeIdentifiers>android-arm64</RuntimeIdentifiers>
+  </PropertyGroup>
+  <!-- Application icon -->
+  <ItemGroup>
+    <!-- Splash screen -->
+    <MauiIcon Include="Resources/Apk/icon.jpg" />
+    <MauiSplashScreen Include="Resources/Apk/splash.png" Color="#171B1A" />
+  </ItemGroup>
+  <!-- XAML pages -->
+  <ItemGroup>
+    <MauiXaml Include="App.xaml" />
+    <MauiXaml Include="AppShell.xaml" />
+    <MauiXaml Include="MainPage.xaml" />
+    <MauiXaml Include="TaskEditorPage.xaml" />
+    <MauiXaml Include="Resources/Styles/Colors.xaml" />
+    <MauiXaml Include="Resources/Styles/Styles.xaml" />
+  </ItemGroup>
+  <!-- Images, fonts and raw assets -->
+  <ItemGroup>
+    <MauiImage Include="Resources/Images/*" />
+    <MauiFont Include="Resources/Fonts/*" />
+    <MauiAsset Include="Resources/Raw/**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+  <!-- NuGet packages -->
+  <ItemGroup>
+    <PackageReference Include="Plugin.LocalNotification" Version="14.1.2" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.90" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.8" />
+  </ItemGroup>
+  <!-- Prevent accidental compilation of an SVG saved as a C# file -->
+  <ItemGroup>
+    <Compile Remove="Resources/AppIcon/appicon.svg.cs" />
+    <Compile Remove="Resources/Appicon/Appicon.svg.cs" />
+    <Compile Remove="Resources/AppIcon/appicon.svg" />
+    <Compile Remove="Resources/Appicon/Appicon.svg" />
+  </ItemGroup>
+</Project>
